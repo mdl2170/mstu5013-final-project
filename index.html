@@ -7,38 +7,36 @@
   <title>Document</title>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link href="css/index.css" rel="stylesheet">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   <script src="js/index.js"></script>
 </head>
 <body>
-  <div class="chat_window">
-    <div class="top_menu">
-      <div class="buttons">
-        <div class="button close"></div>
-        <div class="button minimize"></div>
-        <div class="button maximize"></div>
-      </div>
-      <div class="title">Chat</div>
-    </div>
-    <ul class="messages"></ul>
-    <div class="bottom_wrapper clearfix">
-      <div class="message_input_wrapper">
-        <input class="message_input" placeholder="Type your message here..." />
-      </div>
-      <div class="send_message">
-        <div class="icon"></div>
-        <div class="text">Send</div>
-      </div>
-    </div>
-  </div>
-  <div class="message_template">
-    <li class="message">
-      <div class="avatar"></div>
-      <div class="text_wrapper">
-        <div class="text"></div>
-      </div>
-    </li>
-  </div>
+  <app></app>
 </body>
+
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.8.1/riot+compiler.js"></script>
+
+<script src="tags/message.tag" type="riot/tag"></script>
+<script src="tags/app.tag" type="riot/tag"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC2MAJVdhYpVxGKNrjl9OAJ9BUAWKU0RMo",
+    authDomain: "mstu5013-finalproject.firebaseapp.com",
+    databaseURL: "https://mstu5013-finalproject.firebaseio.com",
+    projectId: "mstu5013-finalproject",
+    storageBucket: "mstu5013-finalproject.appspot.com",
+    messagingSenderId: "357385224864"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+  var scriptedMsgRef = database.ref("/scriptedMsg");
+  var userRef = database.ref("/user");
+  var dialogRef = database.ref("dialog");
+  riot.mount('*');
+</script>
+
 </html>

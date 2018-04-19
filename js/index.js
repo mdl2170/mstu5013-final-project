@@ -38,20 +38,22 @@
             message.draw();
             return $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 300);
         };
+
         $('.send_message').click(function (e) {
             return sendMessage(getMessageText());
         });
+
         $('.message_input').keyup(function (e) {
             if (e.which === 13) {
                 return sendMessage(getMessageText());
             }
         });
-        sendMessage('Hi there! :)');
-        setTimeout(function () {
-            return sendMessage('Hi! How are you?');
-        }, 1000);
-        return setTimeout(function () {
-            return sendMessage('I\'m fine, thank you!');
-        }, 2000);
+        // sendMessage('Hi there! :)');
+        // setTimeout(function () {
+        //     return sendMessage('Hi! How are you?');
+        // }, 1000);
+        // return setTimeout(function () {
+        //     return sendMessage('I\'m fine, thank you!');
+        // }, 2000);
     });
 }.call(this));
