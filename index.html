@@ -19,6 +19,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.8.1/riot+compiler.js"></script>
 
 <script src="tags/message.tag" type="riot/tag"></script>
+<script src="tags/response.tag" type="riot/tag"></script>
 <script src="tags/app.tag" type="riot/tag"></script>
 
 <script>
@@ -32,10 +33,12 @@
     messagingSenderId: "357385224864"
   };
   firebase.initializeApp(config);
+
   var database = firebase.database();
   var scriptedMsgRef = database.ref("/scriptedMsg");
   var userRef = database.ref("/user");
-  var dialogRef = database.ref("dialog");
+  var dialogRef = database.ref("/dialog");
+  
   riot.mount('*');
 </script>
 
