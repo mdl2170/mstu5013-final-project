@@ -32,7 +32,7 @@
     app.scriptedMsg = [];
     app.messages = [];
     app.reponses = [];
-    app.currentScriptedMsgID = "001";
+    app.currentScriptedMsgID = "01";
     var sessionID = dialogRef.push().key;
     app.sessionRef = dialogRef.child(sessionID);
 
@@ -45,23 +45,28 @@
       loadScriptedMsg();
     });
 
-    //Start chat
+    // Start chat. Load the first scripted message and save it to the dialog.
+    // Set currentScriptedMsgID to the next message
     function loadScriptedMsg() {
       var msg = app.scriptedMsg[app.currentScriptedMsgID];
       app.currentScriptedMsgID = msg.next;
       app.sessionRef.push(msg);
     }
 
+    // This will be called after the scripted message loaded.
     app.sessionRef.on("value", function(snapshot) {
       var data = snapshot.val();
       app.messages = [];
       for (key in data)
         app.messages.push(data[key]);
 
-      app.responses = app.scriptedMsg[app.currentScriptedMsgID].response;
-
-      if(app.scriptedMsg[app.currentScriptedMsgID].response != "nill")
+      // currentScriptedMsgID == nill means we don't know what would be the next message yet.
+      // The next message will be decided from the response option that user chooses.
+      if(app.currentScriptedMsgID != "nill")
+      {
+        app.responses = app.scriptedMsg[app.currentScriptedMsgID].response;
         loadScriptedMsg();
+      }
 
       app.update();
     });
