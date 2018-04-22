@@ -31,7 +31,7 @@
     var app = this;
     app.scriptedMsg = [];
     app.messages = [];
-    app.reponses = [];
+    app.responses = [];
     app.currentScriptedMsgID = "01";
     var sessionID = dialogRef.push().key;
     app.sessionRef = dialogRef.child(sessionID);
@@ -39,8 +39,6 @@
     //Retrieve scripted messages
     scriptedMsgRef.once("value", function(snapshot) {
       var data = snapshot.val();
-      // for (key in data)
-      //   app.scriptedMsg.push(data[key]);
       app.scriptedMsg = data;
       loadScriptedMsg();
     });
@@ -49,6 +47,10 @@
     // Set currentScriptedMsgID to the next message
     function loadScriptedMsg() {
       var msg = app.scriptedMsg[app.currentScriptedMsgID];
+      if (msg.response == "nill")
+        app.responses = [];
+      else
+        app.responses = msg.response;
       app.currentScriptedMsgID = msg.next;
       app.sessionRef.push(msg);
     }
@@ -60,13 +62,10 @@
       for (key in data)
         app.messages.push(data[key]);
 
-      // currentScriptedMsgID == nill means we don't know what would be the next message yet.
+      // currentScriptedMsgID == nill means we don't know what the next message would be yet.
       // The next message will be decided from the response option that user chooses.
       if(app.currentScriptedMsgID != "nill")
-      {
-        app.responses = app.scriptedMsg[app.currentScriptedMsgID].response;
         loadScriptedMsg();
-      }
 
       app.update();
     });

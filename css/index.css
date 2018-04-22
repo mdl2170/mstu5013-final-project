@@ -118,6 +118,12 @@ body {
   min-width: 100px;
   position: relative;
 }
+
+.messages .message .message_media {
+  padding-top: 10px;
+  margin-left: 100px;
+}
+
 .messages .message .text_wrapper::after, .messages .message .text_wrapper:before {
   top: 18px;
   border: solid transparent;
@@ -147,6 +153,7 @@ body {
   padding: 20px 20px;
   position: absolute;
   bottom: 0;
+  min-height: 90px;
 }
 .bottom_wrapper .message_input_wrapper {
   display: inline-block;
