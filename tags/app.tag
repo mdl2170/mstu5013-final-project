@@ -12,19 +12,9 @@
       <message each="{ msg in messages }"></message>
     </ul>
     <div class="bottom_wrapper clearfix">
-      <!-- <div class="message_input_wrapper">
-        <input class="message_input" placeholder="Type your message here..." ref="inputMessage"/>
-      </div> -->
+      <!-- <div class="message_input_wrapper"> <input class="message_input" placeholder="Type your message here..." ref="inputMessage"/> </div> -->
       <response each="{ response in responses }"></response>
     </div>
-  </div>
-  <div class="message_template">
-    <li class="message">
-      <div class="avatar"></div>
-      <div class="text_wrapper">
-        <div class="text"></div>
-      </div>
-    </li>
   </div>
 
   <script>
@@ -37,38 +27,61 @@
     app.sessionRef = dialogRef.child(sessionID);
 
     //Retrieve scripted messages
-    scriptedMsgRef.once("value", function(snapshot) {
+    scriptedMsgRef.once("value", function (snapshot) {
       var data = snapshot.val();
       app.scriptedMsg = data;
       loadScriptedMsg();
     });
 
-    // Start chat. Load the first scripted message and save it to the dialog.
-    // Set currentScriptedMsgID to the next message
+    // Start chat. Load the first scripted message and save it to the dialog. Set currentScriptedMsgID to the next message
     function loadScriptedMsg() {
       var msg = app.scriptedMsg[app.currentScriptedMsgID];
+
+      var msgID = app.sessionRef.push().key;
+      msg.id = msgID;
+
       if (msg.response == "nill")
         app.responses = [];
       else
         app.responses = msg.response;
+
       app.currentScriptedMsgID = msg.next;
-      app.sessionRef.push(msg);
+      app.sessionRef.child(msgID).set(msg);
     }
 
     // This will be called after the scripted message loaded.
-    app.sessionRef.on("value", function(snapshot) {
+    app.sessionRef.on("value", function (snapshot) {
       var data = snapshot.val();
       app.messages = [];
       for (key in data)
         app.messages.push(data[key]);
 
-      // currentScriptedMsgID == nill means we don't know what the next message would be yet.
-      // The next message will be decided from the response option that user chooses.
-      if(app.currentScriptedMsgID != "nill")
+      // currentScriptedMsgID == nill means we don't know what the next message would be yet. The next message will be decided from the response option that user chooses.
+      if (app.currentScriptedMsgID != "nill")
         loadScriptedMsg();
 
       app.update();
     });
 
+    app.on('update', function () {
+      var lastMessage = app.messages[app.messages.length - 1];
+      var $message = $('#' + lastMessage.id + ' .msg');
+
+      $('#' + lastMessage.id + ' .typing').removeClass('hidden');
+      anime({
+        targets: '#' + lastMessage.id + ' .typing .text',
+        opacity: 0.2,
+        duration: 500,
+        loop: true,
+        direction: 'reverse'
+      });
+
+      var delay = lastMessage.text.length * 50;
+      $message.addClass('hidden');
+      setTimeout(function () {
+        $('#' + lastMessage.id + ' .typing').addClass('hidden');
+        $message.removeClass('hidden');
+      }, delay);
+    });
   </script>
 </app>
