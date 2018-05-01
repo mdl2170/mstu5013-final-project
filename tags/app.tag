@@ -70,7 +70,7 @@
       app.update();
     }
       else {
-        alert("X");
+        alert("If you want to learn more about cybersecurity, please visit: https://www.dhs.gov/publication/stopthinkconnect-student-resources");
       }
     });
 
