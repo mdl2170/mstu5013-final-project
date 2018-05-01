@@ -65,11 +65,7 @@
 
       // currentScriptedMsgID == nill means we don't know what the next message would be yet. The next message will be decided from the response option that user chooses.
       if (app.currentScriptedMsgID != "nill")
-        {
           loadScriptedMsg();
-
-    }
-
       app.update();
     });
 
@@ -86,7 +82,7 @@
         direction: 'reverse'
       });
 
-      var delay = lastMessage.text.length * 50;
+      var delay = lastMessage.text.length * 30;
       $message.addClass('hidden');
       setTimeout(function () {
         $('#' + lastMessage.id + ' .typing').addClass('hidden');
@@ -94,7 +90,7 @@
 
         setTimeout(function() {
           if(lastMessage.next == "nill" && lastMessage.response == "nill")
-            alert("If you want to learn more about cybersecurity, please visit: https://www.dhs.gov/publication/stopthinkconnect-student-resources");
+            alert("Your score is: "+ app.score + " If you want to learn more about cybersecurity, please visit: https://www.dhs.gov/publication/stopthinkconnect-student-resources");
 }, 1000);
       }, delay);
     });
