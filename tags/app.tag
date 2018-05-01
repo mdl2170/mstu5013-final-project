@@ -67,11 +67,10 @@
       if (app.currentScriptedMsgID != "nill")
         {
           loadScriptedMsg();
-      app.update();
+
     }
-      else {
-        alert("If you want to learn more about cybersecurity, please visit: https://www.dhs.gov/publication/stopthinkconnect-student-resources");
-      }
+
+      app.update();
     });
 
     app.on('update', function () {
@@ -92,6 +91,11 @@
       setTimeout(function () {
         $('#' + lastMessage.id + ' .typing').addClass('hidden');
         $message.removeClass('hidden');
+
+        setTimeout(function() {
+          if(lastMessage.next == "nill" && lastMessage.response == "nill")
+            alert("If you want to learn more about cybersecurity, please visit: https://www.dhs.gov/publication/stopthinkconnect-student-resources");
+}, 1000);
       }, delay);
     });
   </script>
