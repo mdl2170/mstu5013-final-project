@@ -56,6 +56,10 @@
       for (key in data)
         app.messages.push(data[key]);
 
+
+        if(data[key].type == "user-created"){
+        app.score += data[key].score;
+
       // currentScriptedMsgID == nill means we don't know what the next message would be yet. The next message will be decided from the response option that user chooses.
       if (app.currentScriptedMsgID != "nill")
         loadScriptedMsg();
