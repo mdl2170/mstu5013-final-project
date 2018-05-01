@@ -11,6 +11,7 @@
         id: msgID,
         text : e.item.response.text,
         type : "user-created"
+        score : e.item.response.score
       }
       this.parent.currentScriptedMsgID = e.item.response.next;
       this.parent.sessionRef.child(msgID).set(msg);
