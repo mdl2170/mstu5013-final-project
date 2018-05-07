@@ -1,3 +1,5 @@
+//I'm trying to figure out a way to have a score report that says user cybersecurity
+knowledge GOOD/BAD --almost like a credit report 
 <scorereport>
 
   <script>
