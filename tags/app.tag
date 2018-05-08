@@ -88,10 +88,9 @@
         $('#' + lastMessage.id + ' .typing').addClass('hidden');
         $message.removeClass('hidden');
 
-        setTimeout(function() {
-          if(lastMessage.next == "nill" && lastMessage.response == "nill")
-            alert("Your score is: "+ app.score + " If you want to learn more about cybersecurity, please visit: https://www.dhs.gov/publication/stopthinkconnect-student-resources");
-}, 1000);
+        if(lastMessage.next == "nill" && lastMessage.response == "nill")
+          alert("Your score is: "+ app.score + " If you want to learn more about cybersecurity, please visit: https://www.dhs.gov/publication/stopthinkconnect-student-resources");
+
       }, delay);
     });
   </script>
