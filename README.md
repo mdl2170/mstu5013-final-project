@@ -5,10 +5,6 @@ MSTU 5013 - Final Project
 * [Reflection Video](https://youtube.com)
 
 ## Design Executive Summary
-MSTU 5013 - Final Project
-============================
-Team members: Heidi Son, Biying Zhong, Minh Le
-
 Our project addresses cybersecurity learning of teenagers by simulating
 realistic problems that arise in communicating with strangers online. We were able
 to accomplish this through the concept of "the magic circle" (explained in detail below)
@@ -17,7 +13,7 @@ within our platform. Through interacting with our programmed conversational agen
 either disclose or protect their private information. After each conversation progresses
 through the chat, users will accumulate cybersecurity points for each response choice
 and will receive a feedback about their cybersecurity knowledge and channels for additional
-learning. 
+learning.
 
 
 
