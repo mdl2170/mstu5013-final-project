@@ -9,6 +9,18 @@ MSTU 5013 - Final Project
 ============================
 Team members: Heidi Son, Biying Zhong, Minh Le
 
+Our project addresses cybersecurity learning of teenagers by simulating
+realistic problems that arise in communicating with strangers online. We were able
+to accomplish this through the concept of "the magic circle" (explained in detail below)
+within our platform. Through interacting with our programmed conversational agent
+(the stranger), users will be exposed to situations where they will be prompted to
+either disclose or protect their private information. After each conversation progresses
+through the chat, users will accumulate cybersecurity points for each response choice
+and will receive a feedback about their cybersecurity knowledge and channels for additional
+learning. 
+
+
+
 ## Learning Problem
 
 In the recent year, there have been numerous cases of predators used messaging apps to lure teens and children to meet them, and committed crimes such as kidnapping or raping. The scariest thing about meeting someone online is that they may not be who they say they are. A young girl may be speaking with someone who claims to be another young girl, but who is, in reality, an adult male. And the girl may develop trust for a person online who they would be wary of in person. In order to protect one’s privacy, it is critical to learn how to interpret social network settings and be able to decipher to what extent an individual should relay one’s private information on the web.
