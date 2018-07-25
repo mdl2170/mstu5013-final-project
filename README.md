@@ -83,8 +83,6 @@ Draft idea of UI
 
 The App tag consists of the Message tag, Response tag, and Score tag
 
-(...to be updated)
-
 ### Message tag
 
 From the database end:
